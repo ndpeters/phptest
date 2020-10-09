@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
         $valid = 0;
         $add_email = filter_var($add_email, FILTER_SANITIZE_EMAIL);
         if (!filter_var($add_email, FILTER_VALIDATE_EMAIL)) {
-            $valEmailMsg .= "\n<br />Please enter a correct email.";
+            $valEmailMsg .= "<br />Please enter a correct email.";
         } else {
             $valid = 1;
         }
