@@ -102,23 +102,27 @@ $result = mysqli_query($con, "SELECT * FROM message ORDER BY mid DESC $limstring
 <style>
     body {
         background: #d4f6ff;
-        max-width:1200px;
+        max-width: 1200px;
+    }
+
+    ul {
+        padding-inline-start: 0px;
     }
 
     .book-post {
         background-color: #fcd2cd;
-        width: calc(100vw * 0.85) !important;
-        max-width:920px;
+        /* width: calc(100vw * 0.85) !important; */
+        max-width: 920px;
         margin: 0 auto;
-        margin-left:  calc(-100vw * 0.032) !important;
-        padding: 0;
-        border: 1px solid black;
         box-shadow: 0 0 5px 0 gray;
-        border-radius: 5px;
+        border: 1px solid black;
         margin-bottom: 1rem;
+        padding: .3rem;
+        /* margin-left: calc(-100vw * 0.032) !important;
+        border-radius: 5px;
         padding-top: .9rem;
         padding-right: 2rem;
-        padding-left: 2rem;
+        padding-left: 2rem; */
     }
 </style>
 
@@ -131,7 +135,7 @@ $result = mysqli_query($con, "SELECT * FROM message ORDER BY mid DESC $limstring
 
 
             <!-- Display all messages in a list -->
-            <div class="">
+            <div class="ul-container">
                 <ul class="" style="list-style-type: none;">
                     <?php while ($row = mysqli_fetch_array($result)) : ?>
                         <?php
@@ -155,23 +159,19 @@ $result = mysqli_query($con, "SELECT * FROM message ORDER BY mid DESC $limstring
                         ?>
 
                         <li class="book-post">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="row d-flex justify-content-between">
-                                                <div>
-                                                    <h5 style="margin-bottom:-0.2rem;"><?php echo $name ?></h5>
-                                                    <p><?php echo $date ?></p>
-                                                </div>
-                                                <div>
-                                                    <p class="pr-3"><a href = "mailto: <?php echo $email ?>">Email</a></p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <p><?php echo $row['comment']; ?></p>
-                                            </div>
-                                        </div>
+                            <div class="col-12">
+                                <div class="row d-flex justify-content-between">
+                                    <div>
+                                        <h5 style="margin-bottom:-0.2rem;"><?php echo $name ?></h5>
+                                        <p><?php echo $date ?></p>
+                                    </div>
+                                    <div>
+                                        <p class="pr-3"><a href="mailto: <?php echo $email ?>">Email</a></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p><?php echo $row['comment']; ?></p>
                                     </div>
                                 </div>
                             </div>
