@@ -100,8 +100,17 @@ $result = mysqli_query($con, "SELECT * FROM message ORDER BY mid DESC $limstring
 </head>
 
 <style>
+    h1, h2, h3, h4, h5 {
+        color: #95C623;
+    }
+
+    h1 {
+        text-transform:uppercase;
+    }
+
     body {
-        background: #d4f6ff;
+        color: #EFE7DA;
+        background: #0E4749;
         max-width: 1200px;
     }
 
@@ -109,26 +118,33 @@ $result = mysqli_query($con, "SELECT * FROM message ORDER BY mid DESC $limstring
         padding-inline-start: 0px;
     }
 
+    li {
+        border-radius: 12px;
+    }
+
+    .input-border {
+        border: 1px solid #E55812!important;
+    }
+
     .book-post {
-        background-color: #fcd2cd;
-        /* width: calc(100vw * 0.85) !important; */
+        background-color: #002626;
+        color: #EFE7DA;
         max-width: 920px;
         margin: 0 auto;
         box-shadow: 0 0 5px 0 gray;
-        border: 1px solid black;
+        border: 1px solid #E55812;
         margin-bottom: 1rem;
         padding: .3rem;
-        /* margin-left: calc(-100vw * 0.032) !important;
-        border-radius: 5px;
-        padding-top: .9rem;
-        padding-right: 2rem;
-        padding-left: 2rem; */
+    }
+
+    .book-post a {
+        color:white;
     }
 </style>
 
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100" style="margin:0 auto;">
     <main role="main" class="flex-shrink-0">
-        <div class="container">
+        <div class="container page-border">
             <a style="float:right" href="/mysql" class="btn btn-primary" target="_blank">MySQL Admin</a>
             <h1 class="mt-5"><?= APP_NAME ?></h1>
             <p>A modern Geocities guestbook...</p>
@@ -188,11 +204,11 @@ $result = mysqli_query($con, "SELECT * FROM message ORDER BY mid DESC $limstring
             <form class="pb-5" id="myform" name="myform" method="post">
                 <div class="form-group">
                     <label for="ct">Current Date:</label>
-                    <span class="form-control" readonly><?php echo $current_date ?></span>
+                    <span class="form-control input-border" readonly><?php echo $current_date ?></span>
                 </div>
                 <div class="form-group">
                     <label for="addname">Name:</label>
-                    <input type="text" name="addname" class="form-control" value="<?php if ($add_name) : ?><?php echo $add_name; ?><?php endif; ?>">
+                    <input type="text" name="addname" class="form-control input-border" value="<?php if ($add_name) : ?><?php echo $add_name; ?><?php endif; ?>">
                     <?php if ($valNameMsg) : ?>
                         <div class="alert alert-danger" role="alert">
                             <?php echo $valNameMsg; ?>
@@ -201,7 +217,7 @@ $result = mysqli_query($con, "SELECT * FROM message ORDER BY mid DESC $limstring
                 </div>
                 <div class="form-group">
                     <label for="addemail">Email:</label>
-                    <input type="text" name="addemail" class="form-control" value="<?php if ($add_email) : ?><?php echo $add_email; ?><?php endif; ?>">
+                    <input type="text" name="addemail" class="form-control input-border" value="<?php if ($add_email) : ?><?php echo $add_email; ?><?php endif; ?>">
                     <?php if ($valEmailMsg) : ?>
                         <div class="alert alert-danger" role="alert">
                             <?php echo $valEmailMsg; ?>
@@ -210,7 +226,7 @@ $result = mysqli_query($con, "SELECT * FROM message ORDER BY mid DESC $limstring
                 </div>
                 <div class="form-group">
                     <label for="addcomment">Comment:</label>
-                    <textarea name="addcomment" class="form-control"><?php if ($add_comment) : ?><?php echo $add_comment; ?><?php endif; ?></textarea>
+                    <textarea name="addcomment" class="form-control input-border"><?php if ($add_comment) : ?><?php echo $add_comment; ?><?php endif; ?></textarea>
                     <?php if ($valCommentMsg) : ?>
                         <div class="alert alert-danger" role="alert">
                             <?php echo $valCommentMsg; ?>
